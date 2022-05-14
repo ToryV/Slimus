@@ -1,0 +1,54 @@
+1
+git branch Postman
+git branch Jmeter
+git branch CheckList
+git branch Bag_Reports
+git branch SQL
+git branch Charles
+git branch Mobile_testing
+
+2
+git push -u origin Postman
+git push -u origin Jmeter
+git push -u origin CheckList
+git push -u origin Bag_Reports
+git push -u origin SQL
+git push -u origin Charles
+git push -u origin Mobile_testing
+
+3
+git checkout Bag_Reports
+vim BR.txt
+
+4
+git add .
+git commit - m "BR"
+git push
+
+5 
+git merge Bag_Reports
+
+6
+git push -u origin main
+
+7
+git checkout CheckList
+vim CL.txt
+
+8
+git add .
+git commit - m "CL"
+git push
+
+9
+GitHub - Pull request
+
+10
+git fetch
+git pull
+
+
+
+
+
+
