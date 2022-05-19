@@ -1,0 +1,161 @@
+{
+	"info": {
+		"_postman_id": "7a465be5-cea8-49f8-a804-9601b3391ce1",
+		"name": "HW_2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20721940"
+	},
+	"item": [
+		{
+			"name": "EP_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body\", function () {\r",
+							"    pm.expect(pm.response.text()).to.equal(\"This is the first responce from server!ss\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://162.55.220.72:5007/first",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5007",
+					"path": [
+						"first"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EP_2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// 1. Отправить запрос\r",
+							"// 2. Стутас код 200\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// 3. спарсить response body в json\r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"// 4. проверить, что name в ответе равно name s request (name вбить руками.)\r",
+							"pm.test(\"Name\", function () {\r",
+							"    pm.expect(jsonData.name).to.equal(\"Vika\");\r",
+							"});\r",
+							"\r",
+							"// 5. проверить, что age в ответе равно age s request (age вбить руками.)\r",
+							"pm.test(\"Age\", function () {\r",
+							"    pm.expect(jsonData.age).to.equal(\"25\");\r",
+							"});\r",
+							"\r",
+							"// 6. проверить, что salary в ответе равно salary s request (salary вбить руками.)\r",
+							"pm.test(\"Salary\", function () {\r",
+							"    pm.expect(jsonData.salary).to.equal(500);\r",
+							"});\r",
+							"  \r",
+							"// 7. cпарсить request.\r",
+							"let req = request.data\r",
+							"// console.log(req)\r",
+							"\r",
+							"// 8. проверить, что name в ответе равно name из request (name забрать из request.)\r",
+							"pm.test(\"Name_1\", function () {\r",
+							"    pm.expect(jsonData.name).to.equal(req.name)\r",
+							"});\r",
+							"\r",
+							"// 9. проверить, что age в ответе равно age из request (name забрать из request.)\r",
+							"pm.test(\"Age_1\", function () {\r",
+							"    pm.expect(jsonData.age).to.equal(req.age)\r",
+							"});\r",
+							"\r",
+							"// 10. проверить, что salary в ответе равно salary из request (name забрать из request.)\r",
+							"pm.test(\"Salary_1\", function () {\r",
+							"    pm.expect(jsonData.salary).to.equal(Number(req.salary))\r",
+							"});\r",
+							"\r",
+							"//  11. вывести в консоль параметр family из response\r",
+							"console.log(jsonData.family)\r",
+							"\r",
+							"// 12. проверить что u_salary_1_5_year в ответе равно salary*4 (salary забрать из request)\r",
+							"var salary_1_5_y = Number(req.salary)*4\r",
+							"// console.log(salary_1_5_y)\r",
+							"pm.test(\"Salary_1_5_y\", function () {\r",
+							"    pm.expect(jsonData.family.u_salary_1_5_year).to.equal(salary_1_5_y)\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Vika",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "25",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "500",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://162.55.220.72:5005/user_info_3",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"user_info_3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
